@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			a {
+				text-decoration: none;
+				color: #333;
+				display: block;
+			}
+			.product {
+				width: 268px;
+				border: 1px solid #ddd;
+				margin: 40px;
+				text-align: center;
+			}
+			.product a > img {
+				width: 195px;
+				height: 195px;
+			}
+			.describe {
+				color: #845f3f;
+				font-size: 16px;
+			}
+			.product-text {
+				height: 110px;
+				background-color: #f8f8f8;
+				margin-top: 20px;
+			}
+
+			.product-mark img {
+				height: 20px;
+				margin: 0 2px;
+			}
+			.product-mark {
+				font-size: 0px; /* 去掉图片之间的间隙 */
+			}
+			.product-text h3 {
+				font-size: 20px;
+				font-weight: 400;
+				margin-top: 15px;
+			}
+			.product-text p {
+				font-size: 20px;
+				color: #a92112;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+      学习到了什么？
+      1.text-align: center;水平居中
+      使用a标签包裹其他元素时，要把a标签转为块级元素
+     -->
+		<div class="product">
+			<a href="http://localhost:8080">
+				<img src="./images/kettle.png" alt="水壶" />
+				<p class="describe">快速煮水，安心饮用</p>
+				<div class="product-text">
+					<div class="product-mark">
+						<img src="./images/live.png" alt="" />
+						<img src="./images/odds.png" alt="" />
+						<img src="./images/30day.png" alt="" />
+						<img src="./images/server.png" alt="" />
+					</div>
+					<h3>云米电水壶</h3>
+					<p>¥ 89</p>
+				</div>
+			</a>
+		</div>
+	</body>
+</html>

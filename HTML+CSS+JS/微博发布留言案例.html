@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>微博发布</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style-type: none;
+			}
+			.wrap {
+				width: 1200px;
+				margin: 10px auto;
+			}
+			.text textarea {
+				resize: none;
+				width: 100%;
+				height: 130px;
+				border-radius: 10px;
+				padding-left: 20px;
+				padding-top: 10px;
+			}
+			.text button {
+				padding: 10px 30px;
+				background-color: #e74c3c;
+				border: none;
+				border-radius: 5px;
+			}
+			.text span:nth-child(1) {
+				color: red;
+			}
+			.text .right {
+				float: right;
+			}
+			.text {
+				margin-bottom: 60px;
+			}
+			.box li {
+				border-bottom: 1px dashed #ccc;
+				display: flex;
+				height: 120px;
+				justify-content: space-between;
+				margin-bottom: 20px;
+			}
+			.box li .left div {
+				width: 80px;
+				height: 80px;
+				background-color: pink;
+				border-radius: 50%;
+				background: url('https://img0.baidu.com/it/u=2916989845,2183220061&fm=253&fmt=auto&app=138&f=GIF?w=741&h=419') -100px
+					100px;
+			}
+			.box li .center {
+				flex: 1;
+				margin-left: 20px;
+			}
+			.box li .center h3 {
+				font-size: 16px;
+				padding: 10px 0;
+			}
+			.box li .center p {
+				color: #ccc;
+				font-size: 12px;
+				padding: 10px 0;
+			}
+			.box li .center div {
+				margin-top: 5px;
+			}
+			.box li .right {
+				font-size: 33px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="text">
+				<textarea name="" id="" cols="30" rows="10" maxlength="200" placeholder="请输入"></textarea>
+				<div class="right">
+					<span>0</span>
+					<span>/</span>
+					<span>200</span>
+					<button>发布</button>
+				</div>
+			</div>
+			<div class="box">
+				<ul></ul>
+			</div>
+		</div>
+		<!-- 
+      新增节点三步骤
+      1. 创建节点 let box = document.createElement('div')  
+      2. 添加内容 box.innerHTML  = '<p>我是新增的内容</p>'
+      3. 添加到父节点 document.body.appendChild(box)
+     -->
+		<script>
+			// 获取元素
+			let textarea = document.querySelector('textarea');
+			let span = document.querySelector('.text span:nth-child(1)');
+			let btn = document.querySelector('.text button');
+			let uls = document.querySelector('.box ul');
+			// 不足十补零
+			function setVal(val) {
+				return val < 10 ? (val = '0' + val) : val;
+			}
+			// 设置span的值为textarea的字数
+			textarea.oninput = function () {
+				span.innerHTML = this.value.trim().length;
+			};
+			// 点击发布按钮
+			btn.onclick = function () {
+				// 输入为空则返回
+				if (textarea.value.trim().length < 1) return;
+				// 获取当前时间
+				let data = new Date().toLocaleString();
+				let dataset = data.split(' ');
+				dataset1 = dataset[0].split('/');
+				dataset2 = dataset[1].split(':');
+				data =
+					dataset1[0] +
+					'年' +
+					setVal(dataset1[1]) +
+					'月' +
+					setVal(dataset1[2]) +
+					'日 ' +
+					setVal(dataset2[0]) +
+					'时' +
+					setVal(dataset2[1]) +
+					'分' +
+					setVal(dataset2[2]) +
+					'秒';
+
+				// 创建节点
+				let li = document.createElement('li');
+				// 设置节点内容
+				let str = `
+			     <div class="left">
+							<div class="img"></div>
+						</div>
+						<div class="center">
+							<h3>张良</h3>
+							<p>${data}</p>
+							<div>${textarea.value}</div>
+						</div>
+						<div class="right">X</div>
+			     `;
+				li.innerHTML = str;
+				// 添加到父节点
+				document.querySelector('.box ul').insertBefore(li, document.querySelector('.box ul').children[0]);
+				// 清空文本框
+				textarea.value = '';
+				// 调用函数重新计算字数
+				textarea.oninput();
+			};
+
+			// 删除节点--事件代理
+			uls.onclick = function (e) {
+				if (e.target.innerHTML == 'X') {
+					e.target.parentNode.remove();
+				}
+			};
+		</script>
+	</body>
+</html>

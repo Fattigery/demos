@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul,
+			li {
+				list-style: none;
+			}
+			.box {
+				margin: 100px;
+			}
+			ul {
+				display: flex;
+			}
+			ul li {
+				padding: 5px 10px;
+				border-radius: 4px;
+				border: 1px solid #000;
+			}
+			ul li.active {
+				background-color: pink;
+			}
+			.box div {
+				width: 400px;
+				height: 200px;
+				border: 1px solid #000;
+				display: none;
+			}
+			.box div.active {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li class="active">测试</li>
+				<li>测试</li>
+				<li>测试</li>
+				<li>测试</li>
+			</ul>
+			<div class="box1 active">1</div>
+			<div class="box2">2</div>
+			<div class="box3">3</div>
+			<div class="box4">4</div>
+		</div>
+		<script>
+			let lis = document.querySelectorAll('ul li');
+			let boxs = document.querySelectorAll('.box div');
+
+			// 万能版
+			// // 循环每一项
+			// lis.forEach((item, index) => {
+			// 	// 当点击某一个li时
+			// 	item.onclick = function () {
+			// 		// 循环每一项，让所有的li和div都隐藏
+			// 		boxs.forEach((item, index) => {
+			// 			item.classList = '';
+			// 			lis[index].classList = '';
+			// 		});
+			// 		// 让当前点击的li添加类名，对应的索引div也添加类名
+			// 		boxs[index].classList = 'active';
+			// 		lis[index].classList = 'active';
+			// 	};
+			// });
+
+			// 升级版
+			lis.forEach((item, index) => {
+				item.onclick = function () {
+					// 每次点击找出上次选中的元素，移出属性
+					document.querySelector('li.active').classList.remove('active');
+					document.querySelector('div.active').classList.remove('active');
+					// 让当前点击的li添加类名，对应的索引div也添加类名
+					this.classList.add('active');
+					boxs[index].classList.add('active');
+				};
+			});
+		</script>
+	</body>
+</html>

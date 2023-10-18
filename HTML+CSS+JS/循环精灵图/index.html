@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul,
+			li {
+				list-style-type: none;
+			}
+			ul {
+				margin: 100px;
+				width: 126px;
+				/* background-color: green; */
+				font-size: 0;
+			}
+			li {
+				width: 24px;
+				height: 24px;
+				background-color: pink;
+				display: inline-block;
+				margin: 0 10px 10px 0;
+				background: url(./images/sprite.png) no-repeat;
+			}
+			li:nth-child(4n + 4) {
+				margin-right: 0;
+			}
+			li:nth-child(n + 9) {
+				margin-bottom: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script>
+			let lis = document.querySelectorAll('li');
+			let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+			for (let i = 0; i < lis.length; i++) {
+				lis[i].style.backgroundPositionY = -i * 44 + 'px';
+				lis[i].innerHTML = `<span>${arr[i]}</span>`;
+			}
+		</script>
+	</body>
+</html>

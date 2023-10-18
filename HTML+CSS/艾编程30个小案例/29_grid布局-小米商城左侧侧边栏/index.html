@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="../../reset.css" />
+		<style>
+			body {
+				background-image: linear-gradient(to right, skyblue, white);
+			}
+			.menu {
+				width: 230px;
+
+				background-color: rgba(0, 0, 0, 0.5);
+				margin: 50px;
+				padding: 20px 0;
+
+				position: relative;
+			}
+			.menu .item {
+				height: 42px;
+				line-height: 42px;
+				color: #fff;
+				font-size: 14px;
+				padding-left: 30px;
+				background: url(./images/right-jiantou.png) no-repeat 190px center;
+			}
+			.menu .item:hover {
+				background-color: #ff6700;
+				background-image: url(./images/right-jiantou2.png);
+			}
+			.menu .nav {
+				min-width: 250px;
+				height: 460px;
+				background-color: #fff;
+				position: absolute;
+				top: 0;
+				left: 230px;
+				border: 1px solid #ccc;
+				box-sizing: border-box;
+				/* grid */
+				display: grid;
+				/* 设置行数 */
+				grid-template-rows: repeat(6, 1fr);
+				/* 设置列的宽度 */
+				/* grid-template-columns: 250px; */
+				/* 设置子元素的排列方式 */
+				grid-auto-flow: column;
+				/* 设置多出来的列的宽度 */
+				grid-auto-columns: 250px;
+				padding: 20px;
+			}
+			.nav a {
+				display: flex;
+				align-items: center;
+			}
+			.nav img {
+				margin-right: 10px;
+			}
+			.nav span:hover {
+				color: #ff6700;
+			}
+			.menu .nav {
+				display: none;
+			}
+			.menu .item:hover .nav {
+				display: grid;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+  学习了grid布局
+ -->
+
+		<div class="menu">
+			<div class="item">
+				<span>手机</span>
+				<div class="nav">
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-02.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-03.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-04.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-05.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-06.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-02.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-03.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-04.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-05.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-06.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+				</div>
+			</div>
+			<div class="item">
+				<span>手机</span>
+				<div class="nav">
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-02.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-03.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-04.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-05.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-06.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-01.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-02.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-03.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-04.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-05.webp" width="40" alt="" /><span>测试文字</span></a>
+					<a href="#"><img src="./images/grid-mi-06.webp" width="40" alt="" /><span>测试文字</span></a>
+				</div>
+			</div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+			<div class="item"><span>手机</span></div>
+		</div>
+	</body>
+</html>

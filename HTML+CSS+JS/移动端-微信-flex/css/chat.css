@@ -1,0 +1,284 @@
+@import url(./icon.css);
+/* 公共初始化全局CSS样式 */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+	margin: 0 auto !important;
+	min-width: 320px;
+	max-width: 750px;
+	background-color: #f8f8f8;
+	font-size: 0.16rem;
+	color: #666;
+	-webkit-text-size-adjust: 100% !important; /* 打开缩放功能 */
+}
+img {
+	border: 0;
+	max-width: 100%;
+	vertical-align: middle;
+}
+ol,
+ul {
+	list-style: none;
+}
+a,
+a:hover,
+a:visited {
+	color: #666;
+	text-decoration: none;
+}
+.text-center {
+	text-align: center;
+}
+.block-img {
+	display: block;
+}
+
+/* flex */
+.flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.flex-v {
+	-webkit-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.flex-wrap {
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.flex-row-wrap {
+	-webkit-flex-flow: row wrap;
+	-moz-flex-flow: row wrap;
+	-ms-flex-flow: row wrap;
+	-o-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.flex-1 {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+.flex-align-center {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.flex-pack-center {
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+.flex-pack-justify {
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+.flex-pack-around {
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-around;
+	-ms-flex-pack: justify;
+	justify-content: space-around;
+}
+
+.container {
+	height: 100vh; /* 100%  1vh=1%*/
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.fix-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+.fix-container .main {
+	position: absolute;
+	top: 0.5rem;
+	bottom: 0.6rem;
+	left: 0;
+	right: 0;
+}
+.fix-container .header {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+}
+.fix-container .footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+/* 菜单里的开关，使用type为checkbox的input来做  <input class="tpf-switch" type="checkbox" /> */
+.tpf-switch {
+	position: relative;
+	box-sizing: content-box;
+	/* 指定大小和圆角 */
+	width: 0.5rem;
+	height: 0.28rem;
+	border: 2px solid #ccc;
+	outline: 0;
+	border-radius: 0.75rem;
+	/* 默认的背景色是半透明黑色 */
+	background-color: rgba(0, 0, 0, 0.1);
+	/* 因为背景颜色和border在选中后发生了改变，所以就在这里加上过渡 */
+	transition: background-color 0.3s, border 0.3s;
+	/* 去掉checkbox的默认样式 */
+	-webkit-appearance: none;
+	/* 去掉checkbox默认的点击效果 */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* 选中状态下的样式 */
+.tpf-switch:checked {
+	border-color: #07c160;
+	background-color: #07c160;
+}
+
+/* 把checkbox当成容器来用，里面的圆点用伪元素来做 */
+.tpf-switch::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* 长宽与父级的宽相同，并指定圆角*/
+	width: 0.28rem;
+	height: 0.28rem;
+	border-radius: 0.18rem;
+	background-color: #fff;
+	/* 阴影是用来划分边界的 */
+	box-shadow: 0 0 2px #d8d8d8;
+	/* 为了让开关有过渡效果，要使用transition属性。这个属性性能消耗大，要避免大规模使用 */
+	transition: left 0.5s;
+}
+
+/* 选中状态下，圆点的左边缘位置等于父级宽度减去自己的宽度，这样就靠右了 */
+.tpf-switch:checked:after {
+	left: 0.22rem;
+}
+
+/* 样式 */
+.header {
+	height: 0.5rem;
+	width: 100%;
+	background-color: #fff;
+	align-items: center;
+}
+.main {
+	width: 100%;
+}
+.footer {
+	height: 0.6rem;
+	width: 100%;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+}
+.header .left,
+.header .right {
+	width: 0.5rem;
+}
+.header .right .tpf-add {
+	font-size: 0.24rem;
+}
+.header .title {
+	font-size: 0.18rem;
+}
+
+.footer .bar-item i {
+	font-size: 0.24rem;
+}
+.footer .bar-item span {
+	font-size: 0.14rem;
+}
+.footer .active {
+	color: #07c160;
+}
+.footer .bar-item i {
+	position: relative;
+}
+.footer .bar-item:nth-child(3) i::after {
+	content: '';
+	display: inline-block;
+	width: 0.08rem;
+	height: 0.08rem;
+	border-radius: 50%;
+	background-color: red;
+	position: absolute;
+	right: -0.04rem;
+}
+
+/* 聊天区域 */
+.main {
+	/* 超出出现滚动条 */
+	overflow-y: scroll;
+}
+.main .chat-item {
+	background-color: #fff;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0.06rem 0.1rem;
+}
+.main .chat-item .headimg {
+	width: 0.6rem;
+	height: 0.6rem;
+	margin-right: 0.14rem;
+	position: relative;
+}
+.main .center .nickname {
+	font-size: 0.16rem;
+	font-weight: 700;
+}
+.main .center .message {
+	font-size: 0.14rem;
+	color: #999;
+	margin-top: 0.1rem;
+	width: 2rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.main .chat-item .time {
+	font-size: 0.14rem;
+	color: #999;
+}
+.main .chat-item:nth-child(1) .headimg::after {
+	content: '1';
+	display: inline-block;
+	width: 0.15rem;
+	height: 0.15rem;
+	background-color: red;
+	color: white;
+	text-align: center;
+	line-height: 0.15rem;
+	font-size: 0.12rem;
+	position: absolute;
+	right: -0.1rem;
+	top: -0.05rem;
+	border-radius: 50%;
+}

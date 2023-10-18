@@ -1,0 +1,52 @@
+.user-info {
+	display: flex;
+	background-color: #fff;
+	padding: 0.2rem;
+	align-items: center;
+}
+.user-info img {
+	width: 0.5rem;
+	height: 0.5rem;
+	margin-right: 0.1rem;
+}
+.user-info .user-info-base {
+	flex: 1;
+	font-size: 0.14rem;
+	color: #999;
+}
+.user-info .user-info-base div:nth-child(1) {
+	color: #000;
+	font-size: 0.16rem;
+	font-weight: 700;
+}
+.user-info .user-info-base div:nth-last-child(1) {
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.user-info .user-info-r i {
+	font-size: 0.18rem;
+}
+.user-info .user-info-r i:nth-child(1) {
+	font-size: 0.23rem;
+	color: #6de115;
+}
+
+/* 中下 */
+.user-section {
+	height: 0.4rem;
+	background-color: #fff;
+	margin-top: 0.15rem;
+	padding: 0.05rem 0.2rem;
+}
+.user-section .title {
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+.user-section .title i {
+	font-size: 0.18rem;
+	width: 0.25rem;
+	color: #6de115;
+}

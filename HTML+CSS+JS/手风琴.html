@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 1200px;
+				margin: 100px auto;
+				overflow: hidden;
+			}
+			.box div {
+				width: 240px;
+				height: 300px;
+				background-color: green;
+				float: left;
+				text-align: center;
+				color: #fff;
+				line-height: 300px;
+				transition: all 0.5s;
+				overflow: hidden;
+			}
+			div.box2 {
+				background-color: #ccc;
+			}
+			div.box3 {
+				background-color: red;
+			}
+			div.box4 {
+				background-color: rgb(164, 56, 241);
+			}
+			div.box5 {
+				background-color: rgb(27, 223, 244);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="box1">
+				<img
+					src="https://img0.baidu.com/it/u=3130762051,2338330886&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
+					alt=""
+				/>
+			</div>
+			<div class="box2">
+				<img src="https://img0.baidu.com/it/u=306007948,1963156967&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500" alt="" />
+			</div>
+			<div class="box3">
+				<img
+					src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fattach.bbs.miui.com%2Fforum%2F201310%2F16%2F222958jm4tzmookjmmv1g2.jpg&refer=http%3A%2F%2Fattach.bbs.miui.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655544903&t=ecaef5b7fe8164e1e19f934e096a7ded"
+					alt=""
+				/>
+			</div>
+			<div class="box4">
+				<img
+					src="https://img0.baidu.com/it/u=2642223955,2176778396&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+					alt=""
+				/>
+			</div>
+			<div class="box5">
+				<img
+					src="https://img0.baidu.com/it/u=3983948851,1303121672&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+					alt=""
+				/>
+			</div>
+		</div>
+		<script>
+			/*
+      思路：
+        鼠标移入某个盒子，让当前盒子宽度变为800，其他盒子为100px
+        鼠标离开大盒子，所有盒子宽度恢复为240px
+      */
+			let boxs = document.querySelectorAll('.box div');
+			let box = document.querySelector('.box');
+
+			boxs.forEach(item => {
+				// 移入某个盒子
+				item.onmouseenter = function () {
+					// 让所有盒子宽度变为100px
+					boxs.forEach(list => {
+						list.style.width = '100px';
+					});
+					// 当前盒子宽度变为800px
+					this.style.width = '800px';
+				};
+			});
+			// 离开大盒子，复原所有小盒子宽度
+			box.onmouseleave = function () {
+				boxs.forEach(item => {
+					item.style.width = '240px';
+				});
+			};
+		</script>
+	</body>
+</html>

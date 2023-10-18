@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style-type: none;
+			}
+			ul {
+				position: fixed;
+				top: 300px;
+				left: 0;
+			}
+			li {
+				padding: 10px 40px;
+			}
+			li.active {
+				background-color: red;
+				color: #fff;
+			}
+			.box {
+				width: 500px;
+				height: 300px;
+				background-color: red;
+				margin: 10px auto;
+			}
+			.box1 {
+				margin-top: 300px;
+			}
+			.box2 {
+				background-color: green;
+			}
+			.box3 {
+				background-color: blue;
+			}
+			.box4 {
+				background-color: yellow;
+				margin-bottom: 1000px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li class="active">测试1</li>
+			<li>测试2</li>
+			<li>测试3</li>
+			<li>测试4</li>
+		</ul>
+		<div class="box box1">测试1</div>
+		<div class="box box2">测试2</div>
+		<div class="box box3">测试3</div>
+		<div class="box box4">测试4</div>
+		<script>
+			let boxs = document.querySelectorAll('.box');
+			let lis = document.querySelectorAll('li');
+			lis.forEach((item, index) => {
+				item.onclick = function () {
+					// 点击某个li，把有类名的去掉类名
+					document.querySelector('li.active').classList = '';
+					// 让对应index的div滚动到相应位置
+					document.documentElement.scrollTop = boxs[index].offsetTop;
+					// 让点击的li添加类名
+					this.classList = 'active';
+					console.log(boxs[index].offsetTop);
+				};
+			});
+
+			// 浏览器滑动滚动条事件
+			window.onscroll = function () {
+				// 向上取整
+				let scrollTop = Math.ceil(document.documentElement.scrollTop);
+				// 声明一个数组，存储滑动到相应位置div的索引
+				let arr = [0];
+				// 循环，超过div的高度，把索引存入数组
+				boxs.forEach((item, index) => {
+					if (scrollTop >= item.offsetTop) {
+						arr.push(index);
+					}
+				});
+				console.log(arr);
+				// 让li有类名的先去掉类名，让数组中最后一项的索引的li添加类名
+				document.querySelector('li.active').classList = '';
+				lis[arr[arr.length - 1]].classList = 'active';
+			};
+		</script>
+	</body>
+</html>

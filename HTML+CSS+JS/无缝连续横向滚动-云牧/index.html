@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul,
+			li {
+				list-style: none;
+			}
+			.box {
+				width: 800px;
+				border: 2px solid #000;
+				margin: 200px auto;
+				overflow: hidden;
+			}
+			.box ul {
+				display: flex;
+			}
+			.box li {
+				/* 空间不够也不进行缩放 */
+				flex-shrink: 0;
+				width: 160px;
+				height: 160px;
+				background-color: green;
+				margin-right: 10px;
+				color: white;
+				text-align: center;
+				font-size: 30px;
+				line-height: 160px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li style="background-color: #2ecc71">0</li>
+				<li style="background-color: #3498db">1</li>
+				<li style="background-color: #9b59b6">2</li>
+				<li style="background-color: #e74c3c">3</li>
+				<li style="background-color: #f39c12">4</li>
+				<li style="background-color: #d35400">5</li>
+			</ul>
+		</div>
+		<script>
+			// 获取ul
+			let ul = document.querySelector('.box ul');
+			// 将ul下的所有li复制一遍追加到后面
+			ul.innerHTML += ul.innerHTML;
+
+			// 定义一个变量记录移动的像素
+			let ulchange = 0;
+			// 每10毫秒移动一次
+			let timer = null;
+			timer = setInterval(() => {
+				move();
+			}, 10);
+
+			// 定义一个函数让ul移动
+			function move() {
+				// 移动1像素
+				ulchange++;
+				// 当移动到最后一个li时，重头开始移动
+				if (ulchange >= 1020) {
+					ul.style.transform = `translateX(0px)`;
+					// 恢复初始移动像素
+					ulchange = 0;
+				} else {
+					// 没有到达最后一个li时，继续移动
+					ul.style.transform = 'translateX(' + -ulchange + 'px)';
+				}
+			}
+
+			// 当鼠标移入时，清除定时器
+			let box = document.querySelector('.box');
+			box.onmouseenter = () => {
+				clearInterval(timer);
+			};
+
+			// 当鼠标移出时，重新开始定时器
+			box.onmouseleave = () => {
+				timer = setInterval(() => {
+					move();
+				}, 10);
+			};
+		</script>
+	</body>
+</html>

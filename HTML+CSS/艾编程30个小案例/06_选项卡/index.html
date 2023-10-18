@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="../../reset.css" />
+		<style>
+			.tab {
+				width: 800px;
+				/* height: 50px; */
+				background-color: #f7f7f7;
+				margin: 20px auto;
+				border-radius: 30px;
+				text-align: center;
+			}
+			.tab::after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			.tab span {
+				line-height: 40px;
+				padding: 0 40px;
+				border-radius: 30px;
+				float: left;
+			}
+			.tab span i {
+				display: inline-block;
+				width: 26px;
+				height: 25px;
+				/* border: 1px solid red; */
+				background: url(./images/icon.png);
+				background-position: 0 0;
+
+				vertical-align: middle; /* 行内块元素垂直居中 */
+				margin-right: 5px;
+				padding-bottom: 5px;
+			}
+			.tab span:nth-child(2) i {
+				background-position: -26px 0;
+			}
+			.tab span:nth-child(3) i {
+				background-position: -52px 0;
+			}
+			.tab span:nth-child(4) i {
+				background-position: -78px 0;
+			}
+			.tab span:nth-child(5) i {
+				background-position: -104px 0;
+			}
+			.tab span.active {
+				background-color: #fe94a9;
+				color: #fff;
+			}
+			.tab span.active i {
+				background-position: -26px 26px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="tab">
+			<span><i></i>备孕期间</span>
+			<span class="active"><i></i>怀孕</span>
+			<span><i></i>0-1岁</span>
+			<span><i></i>1-2岁</span>
+			<span><i></i>2-3岁</span>
+		</div>
+	</body>
+</html>

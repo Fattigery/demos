@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			h2,
+			form {
+				text-align: center;
+			}
+			table {
+				width: 800px;
+				text-align: center;
+				margin: 20px auto;
+				border-collapse: collapse;
+			}
+			input[type='submit'] {
+				background-color: greenyellow;
+				border: none;
+				padding: 5px 10px;
+				border-radius: 5px;
+			}
+			tr {
+				height: 40px;
+				line-height: 40px;
+			}
+			thead tr {
+				background-color: green;
+				color: #fff;
+			}
+			tbody tr td {
+				border: 1px solid #000;
+			}
+			table thead tr td:not(:nth-last-child(1)) {
+				border-right: 1px solid #fff;
+			}
+			tbody tr td a {
+				background-color: green;
+				color: #fff;
+				padding: 5px 10px;
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>新增学员</h2>
+		<form action="">
+			<label for="name"> 姓名：<input type="text" name="name" id="name" /> </label>
+			<lable for="age">年龄：<input type="number" id="age" /></lable>
+			<span>性别</span>
+			<select class="xb">
+				<option value="男">男</option>
+				<option value="女">女</option>
+			</select>
+			<label for="mn">薪资：<input type="text" id="mn" /></label>
+			<span>就业城市</span>
+			<select class="cs">
+				<option value="北京">北京</option>
+				<option value="上海">上海</option>
+				<option value="深圳">深圳</option>
+				<option value="曹县">曹县</option>
+			</select>
+			<input type="submit" value="录入" />
+		</form>
+		<h2>就业榜</h2>
+		<table>
+			<thead>
+				<tr>
+					<td>学号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+					<td>性别</td>
+					<td>薪资</td>
+					<td>就业城市</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr></tr> -->
+			</tbody>
+		</table>
+		<script>
+			let form = document.querySelector('form');
+			// 组织form提交表单，刷新页面
+			form.onsubmit = function (e) {
+				e.preventDefault();
+			};
+			// 获取表单元素
+			let Name = document.querySelector('#name');
+			let age = document.querySelector('#age');
+			let mn = document.querySelector('#mn');
+			let xb = document.querySelector('.xb');
+			let cs = document.querySelector('.cs');
+			let btn = document.querySelector('input[type="submit"]');
+			let xh = 10001;
+			let tbody = document.querySelector('tbody');
+			btn.onclick = function () {
+				// 获取表单数据
+				let valName = Name.value || '';
+				let ageVal = age.value || '';
+				let mnVal = mn.value || '';
+				let xbVal = xb.value;
+				let csVal = cs.value;
+				xh++;
+				let obj = {
+					name: valName,
+					age: ageVal,
+					mn: mnVal,
+					xb: xbVal,
+					cs: csVal
+				};
+				// console.log(obj);
+				// 非空判断
+				for (let key in obj) {
+					if (obj[key].trim() == '') return;
+				}
+				// 创建tr元素
+				let tr = document.createElement('tr');
+				// 添加元素内容
+				let str = `
+        <td>${xh}</td>
+          <td>${obj.name}</td>
+          <td>${obj.age}</td>
+          <td>${obj.xb}</td>
+          <td>${obj.mn}</td>
+          <td>${obj.cs}</td>
+          <td><a>删除</a></td>
+        `;
+				tr.innerHTML = str;
+				// 添加到tbody
+				tbody.appendChild(tr);
+				// 清空表单
+				// Name.value = '';
+				// age.value = '';
+				// mn.value = '';
+				// 使用form表单的reset方法，一键清空表单
+				form.reset();
+			};
+
+			// 删除操作
+			tbody.onclick = function (e) {
+				if (e.target.nodeName == 'A') {
+					e.target.parentNode.parentNode.remove();
+				}
+			};
+		</script>
+	</body>
+</html>

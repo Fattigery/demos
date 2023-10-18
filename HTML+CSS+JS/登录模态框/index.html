@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			a {
+				text-decoration: none;
+				color: #000;
+			}
+			.login-header {
+				font-size: 24px;
+				text-align: center;
+				margin-top: 20px;
+				/* display: none; */
+			}
+			.bg {
+				display: none;
+				position: absolute;
+				width: 100%;
+				height: 100vh;
+				background-color: rgba(0, 0, 0, 0.3);
+				z-index: 100;
+			}
+			.login {
+				display: none;
+				position: absolute;
+				width: 500px;
+				height: 400px;
+				background-color: white;
+				z-index: 101;
+				box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				padding: 20px;
+				border-radius: 10px;
+			}
+			.login .title {
+				font-size: 24px;
+				text-align: center;
+				padding: 20px 0;
+				cursor: move;
+			}
+			.closeBtn {
+				position: absolute;
+				right: -15px;
+				top: -15px;
+				background-color: white;
+				width: 50px;
+				height: 50px;
+				border-radius: 50px;
+				font-size: 14px;
+				line-height: 50px;
+				text-align: center;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			}
+			.login-input-content {
+				margin-top: 50px;
+			}
+			.login-input {
+				margin-top: 20px;
+			}
+			.login-input label {
+				display: inline-block;
+				width: 100px;
+				text-align: right;
+			}
+			.login-input input {
+				height: 40px;
+				outline: none;
+				width: 300px;
+				border: none;
+				border-bottom: 1px solid #000;
+				padding-left: 10px;
+			}
+			.loginBtn {
+				position: absolute;
+
+				padding: 10px 20px;
+				background-color: green;
+				border-radius: 5px;
+				bottom: 50px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			.loginBtn a {
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="login-header"><a href="javascript:;" id="link">点击，弹出模态框</a></div>
+		<div class="login">
+			<div class="title">
+				登录会员
+				<span><a href="javascript:;" class="closeBtn">关闭</a></span>
+			</div>
+			<div class="login-input-content">
+				<div class="login-input">
+					<label for="">用户名：</label>
+					<input type="text" />
+				</div>
+				<div class="login-input">
+					<label for="">登录密码：</label>
+					<input type="password" />
+				</div>
+			</div>
+			<div class="loginBtn"><a href="javascript:;">登录</a></div>
+		</div>
+		<!-- 遮罩层 -->
+		<div class="bg"></div>
+
+		<script>
+			// 1.点击弹出模态框让登录框与遮罩层显示，点击关闭按钮让登录框与遮罩层隐藏
+			let login = document.querySelector('.login');
+			let bg = document.querySelector('.bg');
+			let link = document.querySelector('#link');
+			let closeBtn = document.querySelector('.closeBtn');
+			link.addEventListener('click', () => {
+				login.style.display = bg.style.display = 'block';
+				link.parentNode.style.display = 'none';
+			});
+			closeBtn.addEventListener('click', () => {
+				login.style.display = bg.style.display = 'none';
+				link.parentNode.style.display = 'block';
+			});
+			// 2.登录框拖拽
+			/*
+			鼠标按下 mouseDown
+			鼠标移动 mouseMove
+			鼠标抬起 mouseUp
+			拖拽过程：鼠标移动过程中，获得最新的值赋值给模态框的top与left值
+			*/
+			let title = document.querySelector('.title');
+			title.addEventListener('mousedown', function (e) {
+				// 模态框的位置 = 鼠标在页面中的坐标减去鼠标在盒子内的坐标
+				// (1).鼠标按下时，得到鼠标在盒子内的坐标
+				let x = e.pageX - login.offsetLeft;
+				let y = e.pageY - login.offsetTop;
+				// (2).鼠标在移动的时候，把鼠标在页面中的坐标减去鼠标在盒子内的坐标，得到的就是模态框的left与top值
+				// 其实就是获得左边框与上边框的距离
+				document.addEventListener('mousemove', move);
+				function move(e) {
+					login.style.left = e.pageX - x + 'px';
+					login.style.top = e.pageY - y + 'px';
+				}
+				// （3）鼠标弹起，就让鼠标移动事件移除
+				document.addEventListener('mouseup', () => {
+					document.removeEventListener('mousemove', move);
+				});
+			});
+		</script>
+	</body>
+</html>

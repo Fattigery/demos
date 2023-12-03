@@ -6,14 +6,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<style>
+			.test {
+				width: 0;
+				border: 50px solid tomato;
+				border-left-color: yellowgreen;
+				border-right-color: antiquewhite;
+				border-bottom-color: blueviolet;
+			}
+
+			/*
+			从上面的例子可以看出，我们只需要将border的颜色设置为透明，然后将某个方向的颜色设置为我们想要的颜色即可。
+			*/
+
 			.box {
 				width: 0;
 				border: 50px solid transparent;
-				border-left-color: aqua;
+				border-bottom-color: tomato;
 			}
 		</style>
 	</head>
 	<body>
+		<div class="test"></div>
 		<div class="box"></div>
 	</body>
 </html>

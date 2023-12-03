@@ -1,0 +1,63 @@
+/* 样式初始化 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+/* 开始写样式 */
+.news {
+  width: 390px;
+  margin: 50px auto;
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: box-shadow 0.3s;
+}
+.news:hover {
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.1), -2px -2px 7px rgba(0, 0, 0, 0.1);
+}
+.news h3 {
+  font-size: 20px;
+}
+.news ul {
+  margin-top: 10px;
+}
+.news ul li {
+  line-height: 35px;
+  font-size: 14px;
+  /* 单行文本溢出显示省略号 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 除了最后一个li，都添加一个底边框 */
+  /* 给前三个li中的数组单独设置不一样的颜色 */
+}
+.news ul li span {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #666;
+}
+.news ul li:hover a,
+.news ul li:hover a span {
+  color: tomato;
+}
+.news ul li:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.news ul li:nth-child(1) a span {
+  color: #e74c3c;
+}
+.news ul li:nth-child(2) a span {
+  color: #d35400;
+}
+.news ul li:nth-child(3) a span {
+  color: #27ae60;
+}
